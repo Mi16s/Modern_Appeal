@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home | Modern Appeal</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #111;
+      background: #fff;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: #111;
+      color: #fff;
+    }
+
+    .footer {
+      background: #111;
+      color: #fff;
+      width: 100vw;
+      padding: 1rem 0;
+      text-align: center;
+      position: relative;
+      left: 0;
+    }
+
+    .header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.signup-btn {
+      color: #ff5ec8;
+    }
+
+    .main-section {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero {
+      padding: 3rem 1rem;
+      background: #fafafa;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #333;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: #ff5ec8;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #e550b4;
+    }
+
+    .btn-secondary {
+      background-color: #111;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #333;
+    }
+
+    .logout-btn {
+      margin-top: 20px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      background-color: #ff5ec8;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .logout-btn:hover {
+      background-color: #000;
+    }
+
+    .footer p {
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .header .container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .logout-btn {
+        position: static;
+        margin-top: 1rem;
+      }
+    }
+
+    .welcome-message {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Modern Appeal Logo" />
+      </a>
+      <nav class="navbar">
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="login.html">Log In</a></li>
+          <li><a href="signup.html" class="signup-btn">Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-section">
+    <div class="hero">
+      <h1>This is Modern Appeal</h1>
+      <p>Streetwear rooted in culture, identity, and purpose. Make your statement now!</p>
+      
+      <div class="hero-banner"></div>
+      
+      <div class="hero-buttons">
+        <a href="collection.html" class="btn-primary">V1</a>
+        <a href="about.html" class="btn-secondary">See More</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2020 Modern Appeal. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const userName = localStorage.getItem('userName');
+    if (!userName) {
+      window.location.href = "login.html";
+    } else {
+      const welcome = document.createElement("div");
+      welcome.className = "welcome-message";
+      welcome.innerText = `Welcome, ${userName}!`;
+     
+      const mainSection = document.querySelector('.main-section');
+      mainSection.prepend(welcome);
+
+     
+      const logoutBtn = document.createElement("button");
+      logoutBtn.className = "logout-btn";
+      logoutBtn.innerText = "Log Out";
+      logoutBtn.addEventListener("click", () => {
+        localStorage.clear();  
+        window.location.href = "login.html"; 
+      });
+      mainSection.prepend(logoutBtn);
+    }
+  </script>
+
+</body>
+</html>

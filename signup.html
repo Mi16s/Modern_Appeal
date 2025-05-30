@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up | Modern Appeal</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .main-section {
+      background: #fafafa;
+      padding: 3rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .form-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+      outline-offset: 2px;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #ff5ec8;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      padding: 0.8rem 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background-color: #ff5ec8;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #e550b4;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .main-section {
+        padding: 2rem 1rem;
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="main-section form-page">
+    <h1>Sign Up</h1>
+    <form class="form-box" id="signupForm">
+      <input type="text" placeholder="Name" id="signupName" required />
+      <input type="email" placeholder="Email" id="signupEmail" required />
+      <input type="password" placeholder="Password" id="signupPassword" required />
+      <button type="submit">Sign Up</button>
+    </form>
+  </main>
+
+  <script>
+    const signupForm = document.getElementById('signupForm');
+
+    signupForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const password = document.getElementById('signupPassword').value;
+
+      const userData = {
+        name: name,
+        email: email,
+        password: password
+      };
+
+      localStorage.setItem('user_data', JSON.stringify(userData));
+
+      alert('Sign up successful! You can now log in.');
+
+      window.location.href = 'login.html';
+    });
+  </script>
+
+</body>
+</html>
